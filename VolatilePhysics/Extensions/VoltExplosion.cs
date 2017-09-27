@@ -19,6 +19,7 @@
 */
 
 using System;
+using System.Numerics;
 
 #if UNITY
 using UnityEngine;
