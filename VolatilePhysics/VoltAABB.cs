@@ -20,6 +20,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Numerics;
 
 #if UNITY
 using UnityEngine;
@@ -55,15 +56,15 @@ namespace Volatile
       float left = source.left;
       float right = source.right;
 
-      if (vector.x < 0.0f)
-        left += vector.x;
+      if (vector.X < 0.0f)
+        left += vector.X;
       else
-        right += vector.x;
+        right += vector.X;
 
-      if (vector.y < 0.0f)
-        bottom += vector.y;
+      if (vector.Y < 0.0f)
+        bottom += vector.Y;
       else
-        top += vector.y;
+        top += vector.Y;
 
       return new VoltAABB(top, bottom, left, right);
     }
@@ -84,13 +85,13 @@ namespace Volatile
 
       if (ray.signX)
       {
-        txmin = (right - ray.origin.x) * ray.invDirection.x;
-        txmax = (left - ray.origin.x) * ray.invDirection.x;
+        txmin = (right - ray.origin.X) * ray.invDirection.X;
+        txmax = (left - ray.origin.X) * ray.invDirection.X;
       }
       else
       {
-        txmin = (left - ray.origin.x) * ray.invDirection.x;
-        txmax = (right - ray.origin.x) * ray.invDirection.x;
+        txmin = (left - ray.origin.X) * ray.invDirection.X;
+        txmax = (right - ray.origin.X) * ray.invDirection.X;
       }
 
       float tymin;
@@ -98,13 +99,13 @@ namespace Volatile
 
       if (ray.signY)
       {
-        tymin = (top - ray.origin.y) * ray.invDirection.y;
-        tymax = (bottom - ray.origin.y) * ray.invDirection.y;
+        tymin = (top - ray.origin.Y) * ray.invDirection.Y;
+        tymax = (bottom - ray.origin.Y) * ray.invDirection.Y;
       }
       else
       {
-        tymin = (bottom - ray.origin.y) * ray.invDirection.y;
-        tymax = (top - ray.origin.y) * ray.invDirection.y;
+        tymin = (bottom - ray.origin.Y) * ray.invDirection.Y;
+        tymax = (top - ray.origin.Y) * ray.invDirection.Y;
       }
 
       if ((txmin > tymax) || (tymin > txmax))
@@ -169,10 +170,10 @@ namespace Volatile
     public bool QueryPoint(Vector2 point)
     {
       return 
-        this.left <= point.x && 
-        this.right >= point.x &&
-        this.bottom <= point.y &&
-        this.top >= point.y;
+        this.left <= point.X && 
+        this.right >= point.X &&
+        this.bottom <= point.Y &&
+        this.top >= point.Y;
     }
 
     /// <summary>
@@ -181,10 +182,10 @@ namespace Volatile
     public bool QueryCircleApprox(Vector2 origin, float radius)
     {
       return
-        (this.left - radius) <= origin.x &&
-        (this.right + radius) >= origin.x &&
-        (this.bottom - radius) <= origin.y &&
-        (this.top + radius) >= origin.y;
+        (this.left - radius) <= origin.X &&
+        (this.right + radius) >= origin.X &&
+        (this.bottom - radius) <= origin.Y &&
+        (this.top + radius) >= origin.Y;
     }
 
     public bool RayCast(ref VoltRayCast ray)
@@ -243,10 +244,10 @@ namespace Volatile
       Vector2 topRight = center + extents;
       Vector2 bottomLeft = center - extents;
 
-      this.top = topRight.y;
-      this.right = topRight.x;
-      this.bottom = bottomLeft.y;
-      this.left = bottomLeft.x;
+      this.top = topRight.Y;
+      this.right = topRight.X;
+      this.bottom = bottomLeft.Y;
+      this.left = bottomLeft.X;
     }
 
     public VoltAABB(Vector2 center, float radius)
@@ -256,22 +257,22 @@ namespace Volatile
 
     public VoltAABB ComputeTopLeft(Vector2 center)
     {
-      return new VoltAABB(this.top, center.y, this.left, center.x);
+      return new VoltAABB(this.top, center.Y, this.left, center.X);
     }
 
     public VoltAABB ComputeTopRight(Vector2 center)
     {
-      return new VoltAABB(this.top, center.y, center.x, this.right);
+      return new VoltAABB(this.top, center.Y, center.X, this.right);
     }
 
     public VoltAABB ComputeBottomLeft(Vector2 center)
     {
-      return new VoltAABB(center.y, this.bottom, this.left, center.x);
+      return new VoltAABB(center.Y, this.bottom, this.left, center.X);
     }
 
     public VoltAABB ComputeBottomRight(Vector2 center)
     {
-      return new VoltAABB(center.y, this.bottom, center.x, this.right);
+      return new VoltAABB(center.Y, this.bottom, center.X, this.right);
     }
 
     private Vector2 ComputeCenter()
