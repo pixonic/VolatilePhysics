@@ -19,6 +19,7 @@
 */
 
 using System;
+using System.Numerics;
 
 #if UNITY
 using UnityEngine;
@@ -457,13 +458,13 @@ namespace Volatile
       this.history = null;
       this.currentState = default(HistoryRecord);
 
-      this.LinearVelocity = Vector2.zero;
+      this.LinearVelocity = Vector2.Zero;
       this.AngularVelocity = 0.0f;
 
-      this.Force = Vector2.zero;
+      this.Force = Vector2.Zero;
       this.Torque = 0.0f;
 
-      this.BiasVelocity = Vector2.zero;
+      this.BiasVelocity = Vector2.Zero;
       this.BiasRotation = 0.0f;
     }
 
@@ -484,10 +485,10 @@ namespace Volatile
       this.CollisionFilter = null;
 
       this.Angle = 0.0f;
-      this.LinearVelocity = Vector2.zero;
+      this.LinearVelocity = Vector2.Zero;
       this.AngularVelocity = 0.0f;
 
-      this.Force = Vector2.zero;
+      this.Force = Vector2.Zero;
       this.Torque = 0.0f;
 
       this.Mass = 0.0f;
@@ -495,7 +496,7 @@ namespace Volatile
       this.InvMass = 0.0f;
       this.InvInertia = 0.0f;
 
-      this.BiasVelocity = Vector2.zero;
+      this.BiasVelocity = Vector2.Zero;
       this.BiasRotation = 0.0f;
 
       this.history = null;
@@ -618,9 +619,9 @@ namespace Volatile
 
     private void ClearForces()
     {
-      this.Force = Vector2.zero;
+      this.Force = Vector2.Zero;
       this.Torque = 0.0f;
-      this.BiasVelocity = Vector2.zero;
+      this.BiasVelocity = Vector2.Zero;
       this.BiasRotation = 0.0f;
     }
 
