@@ -9,7 +9,7 @@ namespace System.Numerics
     /// An attribute that can be attached to JIT Intrinsic methods/properties
     /// </summary>
     [AttributeUsage(AttributeTargets.Method | AttributeTargets.Constructor | AttributeTargets.Property)]
-    internal class JitIntrinsicAttribute : Attribute
+    public class JitIntrinsicAttribute : Attribute
     {
     }
 }
