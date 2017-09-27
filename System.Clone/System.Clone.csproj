@@ -7,8 +7,8 @@
     <ProjectGuid>{49053E95-E384-48F7-8F4D-39A330711484}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Pixonic.System</RootNamespace>
-    <AssemblyName>Pixonic.System</AssemblyName>
+    <RootNamespace>System</RootNamespace>
+    <AssemblyName>System.Clone</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
