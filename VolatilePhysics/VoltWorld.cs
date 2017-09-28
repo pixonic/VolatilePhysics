@@ -20,7 +20,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Numerics;
 
 #if UNITY
 using UnityEngine;

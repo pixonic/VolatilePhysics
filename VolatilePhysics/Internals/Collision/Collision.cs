@@ -18,8 +18,6 @@
  *  3. This notice may not be removed or altered from any source distribution.
 */
 
-using System.Numerics;
-
 #if UNITY
 using UnityEngine;
 #endif
@@ -170,7 +168,7 @@ namespace Volatile
       float radius)
     {
       Vector2 delta = origin - point;
-      return delta.LengthSquared() <= (radius * radius);
+      return delta.sqrMagnitude <= (radius * radius);
     }
 
     /// <summary>
@@ -183,7 +181,7 @@ namespace Volatile
       float radiusB)
     {
       float radiusTotal = radiusA + radiusB;
-      return (originA - originB).LengthSquared() <= (radiusTotal * radiusTotal);
+      return (originA - originB).sqrMagnitude <= (radiusTotal * radiusTotal);
     }
 
     /// <summary>
@@ -198,7 +196,7 @@ namespace Volatile
     {
       Vector2 toOrigin = shapeOrigin - ray.origin;
 
-      if (toOrigin.LengthSquared() < sqrRadius)
+      if (toOrigin.sqrMagnitude < sqrRadius)
       {
         result.SetContained(shape);
         return true;
@@ -219,7 +217,7 @@ namespace Volatile
 
       // N.B.: For historical raycasts this normal will be wrong!
       // Must be either transformed back to world or invalidated later.
-      Vector2 normal = Vector2.Normalize(dist * ray.direction - toOrigin);
+      Vector2 normal = (dist * ray.direction - toOrigin).normalized;
       result.Set(shape, dist, normal);
       return true;
     }
@@ -314,7 +312,7 @@ namespace Volatile
     {
       Vector2 r = overrideBCenter - shapeA.worldSpaceOrigin;
       float min = shapeA.radius + overrideBRadius;
-      float distSq = r.LengthSquared();
+      float distSq = r.sqrMagnitude;
 
       if (distSq >= min * min)
         return null;
@@ -338,7 +336,7 @@ namespace Volatile
       VoltPolygon poly2,
       out Axis axis)
     {
-      axis = new Axis(Vector2.Zero, float.NegativeInfinity);
+      axis = new Axis(Vector2.zero, float.NegativeInfinity);
 
       for (int i = 0; i < poly1.countWorld; i++)
       {

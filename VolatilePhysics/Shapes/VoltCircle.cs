@@ -20,7 +20,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Numerics;
 
 #if UNITY
 using UnityEngine;
@@ -73,10 +72,10 @@ namespace Volatile
     {
       base.Reset();
 
-      this.worldSpaceOrigin = Vector2.Zero;
+      this.worldSpaceOrigin = Vector2.zero;
       this.radius = 0.0f;
       this.sqrRadius = 0.0f;
-      this.bodySpaceOrigin = Vector2.Zero;
+      this.bodySpaceOrigin = Vector2.zero;
     }
 
     #region Functionality Overrides
@@ -89,7 +88,7 @@ namespace Volatile
       this.Area = this.sqrRadius * Mathf.PI;
       this.Mass = this.Area * this.Density * VoltConfig.AreaMassRatio;
       this.Inertia =
-        this.sqrRadius / 2.0f + this.bodySpaceOrigin.LengthSquared();
+        this.sqrRadius / 2.0f + this.bodySpaceOrigin.sqrMagnitude;
     }
 
     protected override void ApplyBodyPosition()

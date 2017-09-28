@@ -81,6 +81,7 @@
     <Compile Include="Internals\History\HistoryRecord.cs" />
     <Compile Include="Internals\IIndexedValue.cs" />
     <Compile Include="Math\Mathf.cs" />
+    <Compile Include="Math\Vector2.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RayCast\VoltRayCast.cs" />
     <Compile Include="RayCast\VoltRayResult.cs" />
@@ -94,12 +95,6 @@
     <Compile Include="VoltShape.cs" />
     <Compile Include="Util\VoltUtil.cs" />
     <Compile Include="VoltWorld.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\System.Clone\System.Clone.csproj">
-      <Project>{49053e95-e384-48f7-8f4d-39a330711484}</Project>
-      <Name>System.Clone</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
