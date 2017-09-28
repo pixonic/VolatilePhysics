@@ -29,9 +29,8 @@ VolatilePhysics/bin/*
 VolatilePhysics/obj/*
 FakeUnity/bin/*
 FakeUnity/obj/*
-System.Clone/bin/*
-System.Clone/obj/*
 
 # Unity script files
 Unity/Unity.*
 Unity/Assembly-CSharp.*
+

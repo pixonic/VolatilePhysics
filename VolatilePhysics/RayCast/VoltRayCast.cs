@@ -20,7 +20,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Numerics;
 
 #if UNITY
 using UnityEngine;
@@ -45,12 +44,12 @@ namespace Volatile
       Vector2 delta = destination - origin;
 
       this.origin = origin;
-      this.direction = Vector2.Normalize(delta);
-      this.distance = delta.Length();
-      this.signX = direction.X < 0.0f;
-      this.signY = direction.Y < 0.0f;
+      this.direction = delta.normalized;
+      this.distance = delta.magnitude;
+      this.signX = direction.x < 0.0f;
+      this.signY = direction.y < 0.0f;
       this.invDirection = 
-        new Vector2(1.0f / direction.X, 1.0f / direction.Y);
+        new Vector2(1.0f / direction.x, 1.0f / direction.y);
     }
 
     public VoltRayCast(Vector2 origin, Vector2 direction, float distance)
@@ -58,10 +57,10 @@ namespace Volatile
       this.origin = origin;
       this.direction = direction;
       this.distance = distance;
-      this.signX = direction.X < 0.0f;
-      this.signY = direction.Y < 0.0f;
+      this.signX = direction.x < 0.0f;
+      this.signY = direction.y < 0.0f;
       this.invDirection = 
-        new Vector2(1.0f / direction.X, 1.0f / direction.Y);
+        new Vector2(1.0f / direction.x, 1.0f / direction.y);
     }
   }
 }

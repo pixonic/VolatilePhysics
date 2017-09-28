@@ -20,7 +20,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Numerics;
 
 #if UNITY
 using UnityEngine;
@@ -77,7 +76,7 @@ namespace Volatile
     {
       this.shape = shape;
       this.distance = 0.0f;
-      this.normal = Vector2.Zero;
+      this.normal = Vector2.zero;
     }
   }
 }

@@ -18,8 +18,6 @@
  *  3. This notice may not be removed or altered from any source distribution.
 */
 
-using System.Numerics;
-
 #if UNITY
 using UnityEngine;
 #endif
@@ -154,14 +152,14 @@ namespace Volatile
     #region Internals
     private void Reset()
     {
-      this.position = Vector2.Zero;
-      this.normal = Vector2.Zero;
+      this.position = Vector2.zero;
+      this.normal = Vector2.zero;
       this.penetration = 0.0f;
 
-      this.toA = Vector2.Zero;
-      this.toB = Vector2.Zero;
-      this.toALeft = Vector2.Zero;
-      this.toBLeft = Vector2.Zero;
+      this.toA = Vector2.zero;
+      this.toB = Vector2.zero;
+      this.toALeft = Vector2.zero;
+      this.toBLeft = Vector2.zero;
 
       this.nMass = 0.0f;
       this.tMass = 0.0f;
