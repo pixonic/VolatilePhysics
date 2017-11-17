@@ -120,6 +120,17 @@ namespace Volatile
 
     #region Properties
     public override VoltShape.ShapeType Type { get { return ShapeType.Polygon; } }
+
+    public IEnumerable<Vector2> BodyVertices
+    {
+        get
+        {
+            for (int i = 0; i < countBody; i++)
+            {
+                yield return bodyVertices[i];
+            }
+        }
+    }
     #endregion
 
     #region Fields

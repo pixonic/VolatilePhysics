@@ -19,7 +19,7 @@
 */
 
 using System;
-
+using System.Collections.Generic;
 #if UNITY
 using UnityEngine;
 #endif
@@ -167,6 +167,17 @@ namespace Volatile
     {
       get { return this.currentState.aabb; }
       private set { this.currentState.aabb = value; }
+    }
+
+    public IEnumerable<VoltShape> Shapes
+    {
+        get
+        {
+            for (int i = 0; i < shapeCount; i++)
+            {
+                yield return shapes[i];
+            }
+        }
     }
 
 #if DEBUG
