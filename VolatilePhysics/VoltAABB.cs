@@ -79,19 +79,33 @@ namespace Volatile
       float left,
       float right)
     {
-      float txmin =
-        ((ray.signX ? right : left) - ray.origin.x) *
-        ray.invDirection.x;
-      float txmax =
-        ((ray.signX ? left : right) - ray.origin.x) *
-        ray.invDirection.x;
+      float txmin;
+      float txmax;
 
-      float tymin =
-        ((ray.signY ? top : bottom) - ray.origin.y) *
-        ray.invDirection.y;
-      float tymax =
-        ((ray.signY ? bottom : top) - ray.origin.y) *
-        ray.invDirection.y;
+      if (ray.signX)
+      {
+        txmin = (right - ray.origin.x) * ray.invDirection.x;
+        txmax = (left - ray.origin.x) * ray.invDirection.x;
+      }
+      else
+      {
+        txmin = (left - ray.origin.x) * ray.invDirection.x;
+        txmax = (right - ray.origin.x) * ray.invDirection.x;
+      }
+
+      float tymin;
+      float tymax;
+
+      if (ray.signY)
+      {
+        tymin = (top - ray.origin.y) * ray.invDirection.y;
+        tymax = (bottom - ray.origin.y) * ray.invDirection.y;
+      }
+      else
+      {
+        tymin = (bottom - ray.origin.y) * ray.invDirection.y;
+        tymax = (top - ray.origin.y) * ray.invDirection.y;
+      }
 
       if ((txmin > tymax) || (tymin > txmax))
         return false;

@@ -106,7 +106,8 @@ namespace Volatile
         Collision.FindAxisMaxPenetration(
           circ.worldSpaceOrigin,
           circ.radius,
-          poly,
+          poly.worldAxes,
+          poly.countWorld,
           out penetration);
 
       if (index < 0)
@@ -268,16 +269,16 @@ namespace Volatile
     internal static int FindAxisMaxPenetration(
       Vector2 origin,
       float radius,
-      VoltPolygon poly,
+      Axis[] axes,
+      int axesCount,
       out float penetration)
     {
-      int index = 0;
       int found = 0;
       penetration = float.NegativeInfinity;
 
-      for (int i = 0; i < poly.countWorld; i++)
+      for (int i = 0; i < axesCount; i++)
       {
-        Axis axis = poly.worldAxes[i];
+        Axis axis = axes[i];
         float dot = Vector2.Dot(axis.Normal, origin);
         float dist = dot - axis.Width - radius;
 
@@ -287,10 +288,8 @@ namespace Volatile
         if (dist > penetration)
         {
           penetration = dist;
-          found = index;
+          found = i;
         }
-
-        index++;
       }
 
       return found;
