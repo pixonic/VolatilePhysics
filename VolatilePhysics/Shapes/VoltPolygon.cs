@@ -208,7 +208,8 @@ namespace Volatile
         Collision.FindAxisMaxPenetration(
           bodySpaceOrigin,
           radius,
-          this,
+          this.bodyAxes,
+          this.countBody,
           out penetration);
 
       if (foundIndex < 0)
